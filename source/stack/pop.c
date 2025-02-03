@@ -6,18 +6,18 @@
 /*   By: carfern2 <carfern2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 20:24:00 by carfern2          #+#    #+#             */
-/*   Updated: 2025/01/17 20:24:00 by carfern2         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:54:48 by carfern2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
-void pop(t_stack *stack)
+void	pop(t_stack *stack)
 {
 	int		value;
 	t_node	*temp;
 
-	if (stack->size == 0)
+	if (stack -> size == 0)
 		return (0);
 	temp = stack->top;
 	value = temp->value;

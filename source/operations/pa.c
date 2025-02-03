@@ -6,17 +6,18 @@
 /*   By: carfern2 <carfern2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 20:15:55 by carfern2          #+#    #+#             */
-/*   Updated: 2025/01/17 20:15:55 by carfern2         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:48:08 by carfern2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
-void pa(t_stack *a, t_stack *b)
+void	pa(t_stack *a, t_stack *b)
 {
-    int		value;
+	int		value;
 
 	if (b->size == 0)
-		return;
+		return ;
 	value = pop(b);
 	push(a, value);
 }

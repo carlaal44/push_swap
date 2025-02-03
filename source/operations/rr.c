@@ -6,13 +6,13 @@
 /*   By: carfern2 <carfern2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 20:37:30 by carfern2          #+#    #+#             */
-/*   Updated: 2025/01/17 20:37:30 by carfern2         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:50:26 by carfern2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void rr(t_stack *a, t_stack *b)
+void	rr(t_stack *a, t_stack *b)
 {
 	ra(a);
 	rb(b);

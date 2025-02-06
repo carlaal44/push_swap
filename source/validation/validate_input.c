@@ -11,3 +11,77 @@
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+static int	is_integer(const char *str)
+{
+	int		i;
+
+	i = 0;
+	if(str[0] == '-' || str[0] == '+')
+		i++;
+	while (str[i])
+	{
+		if(!isdigit(str[i]))
+			return(0);
+		i++;
+	}
+	return(1);
+}
+
+static int	has_duplicates(int *arr, int size)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (j < size - 1)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (arr[i] == arr[j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+static int	convert_to_integers(int argc, char **argv, int *values)
+{
+	int		i;
+
+	i = 0;
+	while (i < argc)
+	{
+		if(!is_integer(argv[i]) || !ft_atoi(argv[i], &values[i - 1]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	validate_input(int argc, char **argv)
+{
+	int		i;
+	int		*values;
+
+	if (argc < 2)
+		return (0);
+	values = (int *)malloc(sizeof(int) * (argc - 1));
+	if (!values)
+		return (0);
+	if (!convert_to_integers(argc, argv, values))
+	{
+		free(values);
+		return (0);
+	}
+	if(has_duplicates(values, argc - 1))
+	{
+		free(values);
+		return(0);
+	}
+	free(values);
+	return(1);
+}

@@ -6,7 +6,7 @@
 /*   By: carfern2 <carfern2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 13:54:07 by carfern2          #+#    #+#             */
-/*   Updated: 2025/02/03 15:36:20 by carfern2         ###   ########.fr       */
+/*   Updated: 2025/02/07 13:13:25 by carfern2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ static int	is_integer(const char *str)
 	int		i;
 
 	i = 0;
-	if(str[0] == '-' || str[0] == '+')
+	if (str[0] == '-' || str[0] == '+')
 		i++;
 	while (str[i])
 	{
-		if(!isdigit(str[i]))
-			return(0);
+		if (!isdigit (str[i]))
+			return (0);
 		i++;
 	}
-	return(1);
+	return (1);
 }
 
 static int	has_duplicates(int *arr, int size)
@@ -52,11 +52,12 @@ static int	convert_to_integers(int argc, char **argv, int *values)
 {
 	int		i;
 
-	i = 0;
+	i = 1;
 	while (i < argc)
 	{
-		if(!is_integer(argv[i]) || !ft_atoi(argv[i], &values[i - 1]))
+		if (!is_integer(argv[i]))
 			return (0);
+		values[i - 1] = ft_atoi(argv[i]);
 		i++;
 	}
 	return (1);
@@ -77,11 +78,11 @@ int	validate_input(int argc, char **argv)
 		free(values);
 		return (0);
 	}
-	if(has_duplicates(values, argc - 1))
+	if (has_duplicates(values, argc - 1))
 	{
-		free(values);
-		return(0);
+		free (values);
+		return (0);
 	}
-	free(values);
-	return(1);
+	free (values);
+	return (1);
 }

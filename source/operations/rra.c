@@ -6,11 +6,11 @@
 /*   By: carfern2 <carfern2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 13:17:27 by carfern2          #+#    #+#             */
-/*   Updated: 2025/02/03 15:51:13 by carfern2         ###   ########.fr       */
+/*   Updated: 2025/02/07 13:30:57 by carfern2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void	rra(t_stack *a)
 {

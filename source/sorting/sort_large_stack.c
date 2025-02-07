@@ -6,7 +6,7 @@
 /*   By: carfern2 <carfern2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 13:53:51 by carfern2          #+#    #+#             */
-/*   Updated: 2025/02/03 15:36:35 by carfern2         ###   ########.fr       */
+/*   Updated: 2025/02/07 12:04:36 by carfern2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ static int	find_median(t_stack *stack)
 	return (median);
 }
 
-static int	is_sorted(t_stack * stack)
+static int	is_sorted(t_stack *stack)
 {
 	t_node	*current;
 
 	current = stack->top;
 	{
 		if (current ->value > current->next->value)
-			return 0;
+			return (0);
 		current = current->next;
 	}
-	return 1;
+	return (1);
 }
 
 static void	finalize_sort(t_stack *stack)
@@ -55,8 +55,7 @@ void	sort_large_stack(t_stack *stack_a, t_stack *stack_b)
 	int		median;
 
 	if (is_sorted(stack_a))
-		return;
-
+		return ;
 	median = find_median(stack_a);
 	while (stack_a->size > 3)
 	{
@@ -65,10 +64,9 @@ void	sort_large_stack(t_stack *stack_a, t_stack *stack_b)
 		else
 			rotate(stack_a);
 	}
-
 	sort_small_stack(stack_a, stack_b);
-	while(stack_b->size > 0)
+	while (stack_b->size > 0)
 		push(stack_a, stack_b);
-	if(!is_sorted(stack_a))
+	if (!is_sorted(stack_a))
 		finalize_sort(stack_a);
 }

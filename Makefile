@@ -2,34 +2,35 @@ NAME = push_swap
 
 SRC = 	source/push_swap.c \
 		source/validation/validate_input.c \
-		source/stack/init_stack \
+		source/stack/init_stack.c \
 		source/stack/push.c \
 		source/stack/pop.c \
 		source/stack/free_stack.c \
 		source/operations/sa.c \
 		source/operations/sb.c \
-		source/operations/ss.c \
-		source/operations/pa.b \
+		source/operations/pa.c \
 		source/operations/pb.c \
 		source/operations/ra.c \
 		source/operations/rb.c \
 		source/operations/rr.c \
 		source/operations/rra.c \
 		source/operations/rrb.c \
-		source/operations/rrr.b \
+		source/operations/rrr.c \
 		source/sorting/sort_small_stack.c \
 		source/sorting/sort_large_stack.c \
-		source/sorting/optimize_moves.c \
-		source/utils/utils.c
+		source/optimization/optimize_moves.c \
+		source/utils/utils1.c \
+		source/utils/utils2.c \
+		source/utils/stack_utils.c
 	
-OBJ = $(SRC_ .c=.o)
-CC = cc;
+OBJ = $(SRC:.c=.o)
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I include
 
 all: $(NAME)
 
-$NAME: $(OBJ)
+$(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJ)
 
 clean:

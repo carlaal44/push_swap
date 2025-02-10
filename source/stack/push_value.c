@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pop.c                                              :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: carfern2 <carfern2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 20:24:00 by carfern2          #+#    #+#             */
-/*   Updated: 2025/02/10 13:24:45 by carfern2         ###   ########.fr       */
+/*   Created: 2025/01/17 20:24:03 by carfern2          #+#    #+#             */
+/*   Updated: 2025/02/10 14:47:03 by carfern2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	pop(t_stack *stack)
+void	push_value(t_stack *stack, int value)
 {
-	int		value;
-	t_node	*temp;
+	t_node	*new_node;
 
-	if (stack -> size == 0)
-		error_and_exit("Error: La pila esta vacia\n");
-	temp = stack->top;
-	value = temp->value;
-	stack->top = stack->top->next;
-	free(temp);
-	stack->size--;
-	return (value);
+	new_node = malloc(sizeof(t_node));
+	if (!new_node)
+		error_and_exit("Error: No se pudo asignar memoria para el nodo\n");
+	new_node->value = value;
+	new_node->next = stack->top;
+	stack->top = new_node;
+	stack->size++;
 }

@@ -6,7 +6,7 @@
 /*   By: carfern2 <carfern2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 13:53:42 by carfern2          #+#    #+#             */
-/*   Updated: 2025/02/07 12:02:29 by carfern2         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:09:14 by carfern2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	rotate_both(t_stack *stack_a, t_stack *stack_b)
 
 void	swap_both(t_stack *stack_a, t_stack *stack_b)
 {
-	swap(stack_a);
-	swap(stack_b);
+	swap_stack(stack_a);
+	swap_stack(stack_b);
 }
 
 void	optimize_moves(t_stack *stack_a, t_stack *stack_b)

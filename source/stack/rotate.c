@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pop.c                                              :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: carfern2 <carfern2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 20:24:00 by carfern2          #+#    #+#             */
-/*   Updated: 2025/02/10 13:24:45 by carfern2         ###   ########.fr       */
+/*   Created: 2025/02/10 14:11:21 by carfern2          #+#    #+#             */
+/*   Updated: 2025/02/10 15:21:22 by carfern2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include <push_swap.h>
 
-int	pop(t_stack *stack)
+void	rotate(t_stack *stack)
 {
-	int		value;
-	t_node	*temp;
+	t_node	*first;
+	t_node	*last;
 
-	if (stack -> size == 0)
-		error_and_exit("Error: La pila esta vacia\n");
-	temp = stack->top;
-	value = temp->value;
-	stack->top = stack->top->next;
-	free(temp);
-	stack->size--;
-	return (value);
+	if (!stack || !stack->top || !stack->top->next)
+		return ;
+	first = stack->top;
+	stack->top = first->next;
+	last = stack->top;
+	while (last->next)
+		last = last->next;
+	first->next = NULL;
 }

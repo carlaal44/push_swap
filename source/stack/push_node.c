@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pop.c                                              :+:      :+:    :+:   */
+/*   push_node.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: carfern2 <carfern2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 20:24:00 by carfern2          #+#    #+#             */
-/*   Updated: 2025/02/10 13:24:45 by carfern2         ###   ########.fr       */
+/*   Created: 2025/02/10 14:27:24 by carfern2          #+#    #+#             */
+/*   Updated: 2025/02/10 15:21:34 by carfern2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include <push_swap.h>
 
-int	pop(t_stack *stack)
+void	push_node(t_stack *dest, t_stack *src)
 {
-	int		value;
 	t_node	*temp;
 
-	if (stack -> size == 0)
-		error_and_exit("Error: La pila esta vacia\n");
-	temp = stack->top;
-	value = temp->value;
-	stack->top = stack->top->next;
-	free(temp);
-	stack->size--;
-	return (value);
+	if (!src || !src->top)
+		return ;
+	temp = src->top;
+	src->top = src->top->next;
+	temp->next = dest->top;
+	dest->top = temp;
+	src->size--;
+	dest->size++;
 }

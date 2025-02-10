@@ -6,11 +6,11 @@
 /*   By: carfern2 <carfern2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 13:54:07 by carfern2          #+#    #+#             */
-/*   Updated: 2025/02/07 13:13:25 by carfern2         ###   ########.fr       */
+/*   Updated: 2025/02/10 13:37:24 by carfern2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include <push_swap.h>
 
 static int	is_integer(const char *str)
 {
@@ -34,7 +34,7 @@ static int	has_duplicates(int *arr, int size)
 	int		j;
 
 	i = 0;
-	while (j < size - 1)
+	while (i < size - 1)
 	{
 		j = i + 1;
 		while (j < size)
@@ -65,7 +65,6 @@ static int	convert_to_integers(int argc, char **argv, int *values)
 
 int	validate_input(int argc, char **argv)
 {
-	int		i;
 	int		*values;
 
 	if (argc < 2)

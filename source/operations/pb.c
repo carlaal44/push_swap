@@ -6,7 +6,7 @@
 /*   By: carfern2 <carfern2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 20:18:22 by carfern2          #+#    #+#             */
-/*   Updated: 2025/02/07 13:35:21 by carfern2         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:00:54 by carfern2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ void	pb(t_stack *a, t_stack *b)
 	if (a->size == 0)
 		return ;
 	value = pop(a);
-	push(b, value);
+	push_value(b, value);
 }

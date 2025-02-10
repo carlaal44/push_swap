@@ -6,7 +6,7 @@
 /*   By: carfern2 <carfern2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 12:20:36 by carfern2          #+#    #+#             */
-/*   Updated: 2025/02/07 12:29:03 by carfern2         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:49:52 by carfern2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	*stack_to_array(t_stack *stack)
 	return (arr);
 }
 
-void	swap(int *a, int *b)
+void	swap_int(int *a, int *b)
 {
 	int		temp;
 
@@ -54,10 +54,10 @@ int	partition(int *arr, int low, int high)
 		if (arr[j] < pivot)
 		{
 			i++;
-			swap(&arr[i], &arr[j]);
+			swap_int(&arr[i], &arr[j]);
 		}
 		j++;
 	}
-	swap(&arr[i + 1], &arr[high]);
+	swap_int(&arr[i + 1], &arr[high]);
 	return (i + 1);
 }

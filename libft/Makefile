@@ -16,7 +16,8 @@ SRCS = $(addprefix ./lib/, ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c f
 
 SRCS_GNL = $(addprefix ./gnl/, get_next_line.c get_next_line_utils.c)
 
-SRCS_PRINTF = $(addprefix ./ft_printf/, ft_printf_basics.c ft_printf_others.c ft_printf.c)
+SRCS_PRINTF = $(addprefix ./ft_printf/, ft_hexa_mayus.c ft_hexa_min.c ft_num_nosign.c \
+				ft_printf.c ft_punt_hexa.c ft_putchar.c ft_putnbr.c ft_putstr.c)
 		
 SRCS_BONUS = $(addprefix ./bonus/, ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 				ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \

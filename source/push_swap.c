@@ -10,48 +10,51 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "./include/push_swap.h"
 
-static t_stack	*init_stack(int argc, char **argv)
+void	show_lst(t_stack **stack)
 {
-	t_stack		*stack;
-	int			i;
+	t_stack	*aux;
 
-	stack = create_stack();
-	if (!stack)
-		error_and_exit("Error: No se pudo crear la pila\n");
-	i = argc - 1;
-	while (i > 0)
+	aux = *stack;
+	while (aux != NULL)
 	{
-		push_value(stack, ft_atoi(argv[i]));
-		i--;
+		printf("STACK NODE	->	%p\n", *stack);
+		if (aux->prev)
+			printf("PREV NUM[%d]	->	%ld\n", aux->prev->id, aux->prev->num);
+		printf("NUM NODE[%d]	->	%ld\n", aux->id, aux->num);
+		printf("COST NODE	->	%d\n", (*stack)->cost);
+		printf("ABOVE MEDIAN	->	%d\n", aux->median);
+		printf("MIN COST	->	%d\n", aux->min_cost);
+		printf("TARGET NODE	->	%p\n", aux->target);
+		printf("PREV NODE	->	%p\n", aux->prev);
+		printf("NEXT NODE	->	%p\n\n\n", aux->next);
+		aux = aux->next;
 	}
-	return (stack);
 }
 
-int	main(int argc, char **argv)
+int	main(int ac, char *av[])
 {
-	t_stack		*stack_a;
-	t_stack		*stack_b;
+	t_stack	**stack_a;
+	t_stack	**stack_b;
 
-	if (!validate_input (argc, argv))
-		error_and_exit("Error: Entrada no válida\n");
-	stack_a = init_stack (argc, argv);
-	stack_b = create_stack();
-	if (!stack_b)
+	stack_a = ft_calloc(1, sizeof(t_stack *));
+	stack_b = ft_calloc(1, sizeof(t_stack *));
+	if (ac > 1)
 	{
-		free_stack(stack_a);
-		error_and_exit("Error: No se pudo crear la pila\n");
+		stack_creator(av, stack_a);
+		if (!stack_sorted(*stack_a))
+		{
+			if (stack_len(*stack_a) == 2)
+				swap(stack_a, stack_b, MOVESA);
+			else if (stack_len(*stack_a) == 3)
+				sort_stack_three(stack_a);
+			else
+				sort_stack(stack_a, stack_b);
+		}
+		free_list(stack_a);
+		free_list(stack_b);
 	}
-	if (!is_sorted(stack_a))
-	{
-		if (stack_a->size <= 3)
-			sort_small_stack(stack_a, stack_b);
-		else
-			sort_large_stack(stack_a, stack_b);
-		optimize_moves(stack_a, stack_b);
-	}
-	free_stack (stack_a);
-	free_stack (stack_b);
-	return (0);
+	else
+		ft_putstr_fd("Error\n", STDERR_FILENO);
 }

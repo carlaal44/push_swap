@@ -1,46 +1,50 @@
-NAME = push_swap
+GREEN	=	\033[92;1m
+CLEAR	=	\033[0m
 
-SRC = 	source/push_swap.c \
-		source/operations/sa.c \
-		source/operations/sb.c \
-		source/operations/pa.c \
-		source/operations/pb.c \
-		source/operations/ra.c \
-		source/operations/rb.c \
-		source/operations/rr.c \
-		source/operations/rra.c \
-		source/operations/rrb.c \
-		source/operations/rrr.c \
-		source/optimization/optimize_moves.c \
-		source/sorting/sort_small_stack.c \
-		source/sorting/sort_large_stack.c \
-		source/stack/free_stack.c \
-		source/stack/init_stack.c \
-		source/stack/pop.c \
-		source/stack/push_node.c \
-		source/stack/push_value.c \
-		source/stack/reverse_rotate.c \
-		source/stack/rotate.c \
-		source/stack/swap_stack.c \
-		source/utils/stack_utils.c \
-		source/utils/utils1.c \
-		source/utils/utils2.c \
-		source/validation/validate_input.c 
-	
-OBJ = $(SRC:.c=.o)
+CFLAGS = -Wall -Werror -Wextra -g3 #-fsanitize=address
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I include
+RM = rm -f
 
-all: $(NAME)
+LIBFTA = libft/libft.a
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJ)
+SRCS = $(addprefix ./source/, push_swap.c \
+		movements/push.c movements/reverse_rotate.c movements/rotate.c movements/swap.c \
+		stack/stack_creator.c stack/stack_properties.c stack/stack_sort.c stack/stack_utils.c stack/stack_setters.c)
+
+SRCS_BONUS = $(addprefix ./source/, bonus/checker.c \
+		movements/push.c movements/reverse_rotate.c movements/rotate.c movements/swap.c \
+		stack/stack_creator.c stack/stack_properties.c stack/stack_utils.c)
+
+OBJS = $(SRCS:.c=.o)
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+
+all : $(NAME)
+
+bonus : $(BONUS)
+
+$(NAME) : $(OBJS)
+	@make all -sC ./libft
+	@echo "$(GREEN)Compiling Libft.$(CLEAR)"
+	@$(CC) $(CFLAGS) $(OBJS) -I ../push_swap.h $(LIBFTA) -o $(NAME)
+	@echo "$(GREEN)Push Swap Compiled.$(CLEAR)"
+
+$(BONUS) : $(OBJS_BONUS)
+	@make all -sC ./libft
+	@echo "$(GREEN)Compiling Libft.$(CLEAR)"
+	@$(CC) $(CFLAGS) $(OBJS_BONUS) -I ../push_swap.h $(LIBFTA) -o $(BONUS)
+	@echo "$(GREEN)Checker Compiled.$(CLEAR)"
 
 clean:
-	rm -f $(OBJ)
+	@$(RM) $(OBJS)
+	@$(RM) $(OBJS_BONUS)
+	@make clean -sC libft
+	@echo "$(RED)All Objs Deleted.$(CLEAR)"
 
-fclean:
-	rm -f $(NAME)
+fclean: clean
+	@$(RM) $(NAME)
+	@$(RM) $(BONUS)
+	@$(RM) $(LIBFTA)
+	@echo "$(RED)Everything Deleted.$(CLEAR)"
 
 re: fclean all
 

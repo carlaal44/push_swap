@@ -6,7 +6,7 @@
 /*   By: carfern2 <carfern2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 20:30:57 by carfern2          #+#    #+#             */
-/*   Updated: 2025/05/22 08:12:57 by carfern2         ###   ########.fr       */
+/*   Updated: 2025/05/26 09:20:55 by carfern2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,8 @@ void					add_node_back(t_stack **stack, t_stack *new);
 long					ft_atol_ps(char *str);
 
 /* =============== SHOW FUNTIONS =============== */
+
+/* =================== UTILS =================== */
+void					free_matrix(char **matrix);
 
 #endif
